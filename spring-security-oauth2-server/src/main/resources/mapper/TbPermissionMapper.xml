@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cj.oauth2.server.mapper.TbPermissionMapper">
+    <resultMap id="BaseResultMap" type="com.cj.oauth2.server.domain.TbPermission">
+        <!--@mbg.generated generated on Thu Apr 04 18:12:35 CST 2019.-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="parent_id" jdbcType="BIGINT" property="parent_id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="enname" jdbcType="VARCHAR" property="enname"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="created" jdbcType="TIMESTAMP" property="created"/>
+        <result column="updated" jdbcType="TIMESTAMP" property="updated"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,parent_id,name,enname,url,description,created,updated
+    </sql>
+    <select id="selectByUserId" resultMap="BaseResultMap">  <!-- 不能直接用实体类，因为实体类和数据库字段有不同的名称时会变null，BaseResultMap里是使用column和property对应的 -->
+      SELECT p.* From tb_user AS u
+      LEFT JOIN tb_user_role AS ur ON u.id = ur.user_id
+      LEFT JOIN tb_role AS r ON ur.role_id = r.id
+      LEFT JOIN tb_role_permission AS rp ON r.id = rp.role_id
+      LEFT JOIN tb_permission AS p ON rp.permission_id = p.id
+      WHERE u.id = ${userId};
+    </select>
+</mapper>

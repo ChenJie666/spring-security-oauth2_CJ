@@ -1,0 +1,39 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /contents
+
+spring:
+  application:
+    name: oauth2-resource
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://116.62.148.11:3307/oauth2_resource?usrUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: abc123
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+
+mybatis:
+  type-aliases-package: com.cj.oauth2.entities
+  mapper-locations: classpath:mapper/*.xml
+
+
+security:
+  oauth2:
+    client:
+      client-id: client2
+      client-secret: secret2  #设备的id和secret，此处secret2没有加密
+      access-token-uri: http://localhost:8080/oauth/token #发送携带客户端信息和授权码的请求获取token
+      user-authorization-uri: http://localhost:8080/oauth/authorize #进行认证，返回授权码
+    resource:
+      token-info-uri: http://localhost:8080/oauth/check_token #验证token的权限，需要在认证服务器中开放这个接口
