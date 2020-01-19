@@ -13,6 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * 验证用户信息，验证用户权限
+ */
+
 @Configuration  //TODO 这是一个配置类
 @EnableWebSecurity  //TODO 启动授权服务
 @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)  //TODO 设置全局的请求拦截

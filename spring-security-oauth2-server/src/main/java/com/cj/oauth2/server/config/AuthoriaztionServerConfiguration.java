@@ -20,6 +20,9 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import javax.servlet.annotation.MultipartConfig;
 import javax.sql.DataSource;
 
+/**
+ * 验证客户端信息和授权码，存储并返回授权码
+ */
 
 @Configuration
 @EnableAuthorizationServer

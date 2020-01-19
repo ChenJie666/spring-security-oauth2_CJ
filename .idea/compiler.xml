@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-security-oauth2" target="1.8" />
-      <module name="spring-security-oauth2-dependencies" target="1.8" />
+      <module name="spring-security-oauth2-dependencies" target="1.5" />
       <module name="spring-security-oauth2-resource" target="1.8" />
       <module name="spring-security-oauth2-server" target="1.8" />
     </bytecodeTargetLevel>
