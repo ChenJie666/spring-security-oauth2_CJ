@@ -15,7 +15,7 @@
     <properties>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>  <!-- 2.1版本的springboot一定要和Greenwich版本的springcloud搭配使用 -->
         <hikaricp.version>3.0.0</hikaricp.version>
-        <mysql.version>5.1.46</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <spring-boot-mapper.version>2.1.5</spring-boot-mapper.version>
     </properties>
 
